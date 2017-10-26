@@ -17,9 +17,10 @@ public class Employee {
         this.age = -1;
     }
 
-    public Employee(String name, double salary, String position, String department, String email) {
+    public Employee(String name, double salary, String position, String department, String emAge) {
         this(name, salary, position, department);
-        this.email = email;
+        if (emAge.contains("@")) this.email = email;
+        else this.age = Integer.parseInt(emAge);
     }
 
     public Employee(String name, double salary, String position, String department, String email, int age) {
