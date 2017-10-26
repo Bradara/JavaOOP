@@ -27,7 +27,7 @@ public class Main {
 
     private static void print(Integer id) {
         if (bankAccountSet.containsKey(id)) {
-            System.out.printf("Account %s, balance %.2f", bankAccountSet.get(id), bankAccountSet.get(id).getBalance());
+            System.out.printf("Account %s, balance %.2f%n", bankAccountSet.get(id), bankAccountSet.get(id).getBalance());
         } else{
             System.out.println("Account does not exist");
         }
@@ -35,10 +35,10 @@ public class Main {
 
     private static void withdraw(Integer id, Double sum) {
         if (bankAccountSet.containsKey(id)) {
-            if (bankAccountSet.get(id).getBalance() < sum) {
-                System.out.println("Insufficient balance");
-            } else{
+            if ((bankAccountSet.get(id).getBalance() - sum)>=0) {
                 bankAccountSet.get(id).withdraw(sum);
+            } else{
+                System.out.println("Insufficient balance");
             }
         } else{
             System.out.println("Account does not exist");

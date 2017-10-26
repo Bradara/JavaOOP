@@ -4,21 +4,13 @@ class BankAccount {
     private int id;
     private double balance;
 
-    public BankAccount(int id) {
+    BankAccount(int id) {
         this.id = id;
         this.balance = 0.0;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public double getBalance() {
+    double getBalance() {
         return balance;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     void deposit(double sum){
