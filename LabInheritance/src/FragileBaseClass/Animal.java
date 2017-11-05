@@ -1,17 +1,20 @@
 package FragileBaseClass;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class Animal {
-    protected List<Food> foodEaten;
+class Animal {
+    protected ArrayList<Food> foodEaten;
 
-    public void eat(Food food) {
+    Animal() {
+        this.foodEaten = new ArrayList<>();
+    }
+
+    final void eat(Food food) {
         this.foodEaten.add(food);
     }
 
-    public void eatAll(Food[] foods){
-        for (Food food : foods) {
-            this.foodEaten.add(food);
-        }
+    void eatAll(Food[] foods){
+        Collections.addAll(this.foodEaten, foods);
     }
 }
