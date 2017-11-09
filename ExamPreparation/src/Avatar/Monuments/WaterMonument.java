@@ -7,4 +7,14 @@ public class WaterMonument extends Monument {
         super(name);
         this.waterAffinity = waterAffinity;
     }
+
+    @Override
+    public int getAffinity() {
+        return this.waterAffinity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Water Monument: %s, Water Affinity: %d%n",this.getName(), this.getAffinity());
+    }
 }

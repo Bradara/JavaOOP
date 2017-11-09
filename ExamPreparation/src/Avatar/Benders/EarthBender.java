@@ -7,4 +7,14 @@ public class EarthBender extends Bender{
         super(name, power);
         this.groundSaturation = groundSaturation;
     }
+
+    @Override
+    public double getAffinity() {
+        return this.groundSaturation;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Earth Bender: %s, Power: %d, Ground Saturation: %.2f%n", this.getName(), this.getPower(), this.getAffinity());
+    }
 }

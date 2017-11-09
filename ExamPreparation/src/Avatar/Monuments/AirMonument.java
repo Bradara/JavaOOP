@@ -7,4 +7,14 @@ public class AirMonument extends  Monument{
         super(name);
         this.airAffinity = airAffinity;
     }
+
+    @Override
+    public int getAffinity() {
+        return this.airAffinity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Air Monument: %s, Air Affinity: %d%n",this.getName(), this.getAffinity());
+    }
 }

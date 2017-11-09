@@ -7,4 +7,14 @@ public class EarthMonument extends Monument{
         super(name);
         this.earthAffinity = earthAffinity;
     }
+
+    @Override
+    public int getAffinity() {
+        return this.earthAffinity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Earth Monument: %s, Earth Affinity: %d%n",this.getName(), this.getAffinity());
+    }
 }

@@ -7,4 +7,14 @@ public class FireMonument extends Monument{
         super(name);
         this.fireAffinity = fireAffinity;
     }
+
+    @Override
+    public int getAffinity() {
+        return this.fireAffinity;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Fire Monument: %s, Fire Affinity: %d%n",this.getName(), this.getAffinity());
+    }
 }

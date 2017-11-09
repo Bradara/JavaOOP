@@ -6,4 +6,10 @@ public abstract class Monument {
     public Monument(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public abstract int getAffinity();
 }
