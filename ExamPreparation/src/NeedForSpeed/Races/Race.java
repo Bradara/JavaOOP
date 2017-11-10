@@ -12,7 +12,7 @@ public abstract class Race {
     private List<Car> participants;
     private boolean isOpen;
 
-    protected Race(int length, String route, int prize) {
+    Race(int length, String route, int prize) {
         this.setLength(length);
         this.setRoute(route);
         this.setPrize(prize);
@@ -36,7 +36,7 @@ public abstract class Race {
         this.route = route;
     }
 
-    public int getPrize() {
+    int getPrize() {
         return prize;
     }
 
@@ -57,6 +57,10 @@ public abstract class Race {
         if (this.isOpen && !this.participants.contains(car)) {
             this.participants.add(car);
         }
+    }
+
+    public void setOpen(boolean open) {
+        this.isOpen = open;
     }
 
     @Override

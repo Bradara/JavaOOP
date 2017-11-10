@@ -15,10 +15,10 @@ public class Main {
 
             switch (input[0]) {
                 case "register":
-                    CarManager.register(input);
+                    CarManager.register(Integer.valueOf(input[1]), input[2], input[3], input[4], Integer.valueOf(input[5]), Integer.valueOf(input[6]), Integer.valueOf(input[7]), Integer.valueOf(input[8]), Integer.valueOf(input[9]));
                     break;
                 case "open":
-                    CarManager.open(input);
+                    CarManager.open(Integer.parseInt(input[1]), input[2], Integer.parseInt(input[3]), input[4], Integer.parseInt(input[5]));
                     break;
                 case "park":
                     CarManager.park(Integer.valueOf(input[1]));
@@ -42,6 +42,6 @@ public class Main {
 
         }
 
-        System.out.println(sb);
+        System.out.print(sb);
     }
 }

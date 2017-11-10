@@ -14,6 +14,6 @@ public class Cat extends Animal{
     }
 
     public int getIntelligence() {
-        return intelligence;
+        return this.intelligence;
     }
 }

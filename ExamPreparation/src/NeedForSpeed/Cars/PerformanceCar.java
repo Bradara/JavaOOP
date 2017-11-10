@@ -12,12 +12,12 @@ public class PerformanceCar extends Car {
     }
 
     public List<String> getAddOns() {
-        return addOns;
+        return this.addOns;
     }
 
     @Override
     public void addAddOns(String s){
-        addOns.add(s);
+        this.addOns.add(s);
     }
 
     @Override

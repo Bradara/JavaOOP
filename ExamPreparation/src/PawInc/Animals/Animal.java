@@ -18,19 +18,19 @@ public abstract class Animal {
     }
 
     public String getAdoptionCenterName() {
-        return adoptionCenterName;
+        return this.adoptionCenterName;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public int getAge() {
-        return age;
+        return this.age;
     }
 
     public boolean isCleansed() {
-        return cleansed;
+        return this.cleansed;
     }
 
     public void setName(String name) {
@@ -41,7 +41,7 @@ public abstract class Animal {
         this.age = age;
     }
 
-    public void setUncleaned() {
+    private void setUncleaned() {
         this.cleansed = false;
     }
 

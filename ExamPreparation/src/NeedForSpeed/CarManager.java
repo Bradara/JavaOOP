@@ -15,28 +15,28 @@ class CarManager {
     private static Map<Integer, Race> races = new HashMap<>();
     private static Garage garage = new Garage();
 
-    static void register(String... input) {
+    static void register(int id, String type, String brand, String model, int yearOfProduction, int horsepower, int acceleration, int suspension, int durability) {
         //register 1 Performance BMV M92 2013 300 4 150 75
-        if (input[2].equalsIgnoreCase("Performance")) {
-            cars.putIfAbsent(Integer.parseInt(input[1]), new PerformanceCar(input[3], input[4], Integer.valueOf(input[5]), Integer.valueOf(input[6]), Integer.valueOf(input[7]), Integer.valueOf(input[8]), Integer.valueOf(input[9])));
-        } else if (input[2].equalsIgnoreCase("Show")) {
-            cars.putIfAbsent(Integer.parseInt(input[1]), new ShowCar(input[3], input[4], Integer.valueOf(input[5]), Integer.valueOf(input[6]),Integer.valueOf(input[7]),Integer.valueOf(input[8]),Integer.valueOf(input[9])));
+        if (type.equalsIgnoreCase("Performance")) {
+            cars.putIfAbsent(id, new PerformanceCar(brand, model, yearOfProduction, horsepower, acceleration, suspension, durability));
+        } else if (type.equalsIgnoreCase("Show")) {
+            cars.putIfAbsent(id, new ShowCar(brand, model, yearOfProduction, horsepower, acceleration, suspension, durability));
         }
     }
 
-    public static void open(String[] input) {
+    static void open(int id, String type, int length, String route, int prizePool) {
         //open 1 Drag 10 BeverlyHills 50000
-        if (input[2].equalsIgnoreCase("Drag")) {
-            races.putIfAbsent(Integer.valueOf(input[1]), new DragRace(Integer.valueOf(input[3]), input[4], Integer.parseInt(input[5])));
-        } else if (input[2].equalsIgnoreCase("Casual")) {
-            races.putIfAbsent(Integer.valueOf(input[1]), new CasualRace(Integer.valueOf(input[3]), input[4], Integer.parseInt(input[5])));
-        } else if (input[2].equalsIgnoreCase("Drift")) {
-            races.putIfAbsent(Integer.valueOf(input[1]), new DragRace(Integer.valueOf(input[3]), input[4], Integer.parseInt(input[5])));
+        if (type.equalsIgnoreCase("Drag")) {
+            races.putIfAbsent(id, new DragRace(length, route, prizePool));
+        } else if (type.equalsIgnoreCase("Casual")) {
+            races.putIfAbsent(id, new CasualRace(length, route, prizePool));
+        } else if (type.equalsIgnoreCase("Drift")) {
+            races.putIfAbsent(id, new DragRace(length, route, prizePool));
         }
     }
 
-    public static void park(Integer carID) {
-        Car c = cars.get(carID);
+    static void park(int id) {
+        Car c = cars.get(id);
 
         if (c.isRacer()) {
             return;
@@ -46,36 +46,38 @@ class CarManager {
         garage.parkCar(c);
     }
 
-    public static void participate(Integer carID, Integer raceID) {
-        Car c = cars.get(carID);
+    static void participate(int carId, int raceId) {
+        Car c = cars.get(carId);
 
         if (c.isParked()) {
             return;
         }
 
         c.setRacer(true);
-        races.get(raceID).addParticipant(c);
+        races.get(raceId).addParticipant(c);
     }
 
-    public static String check(Integer carID) {
-        Car car = cars.get(carID);
+    static String check(int id) {
+        Car car = cars.get(id);
 
         return car.toString();
     }
 
-    public static String start(Integer raceID) {
-        Race r = races.get(raceID);
+    static String start(int id) {
+        Race r = races.get(id);
         r.getParticipants().forEach(car -> car.setRacer(false));
+        r.setOpen(false);
         return r.toString();
     }
 
-    public static void unpark(Integer carID) {
-        Car car = cars.get(carID);
+    static void unpark(int id) {
+        Car car = cars.get(id);
+        car.setParked(false);
         garage.unparkCar(car);
 
     }
 
-    public static void tune(Integer tuneIndex, String addOns) {
-        garage.tune(tuneIndex, addOns);
+    static void tune(int tuneIndex, String addOn) {
+        garage.tune(tuneIndex, addOn);
     }
 }

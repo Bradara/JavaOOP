@@ -10,7 +10,8 @@ public class ShowCar extends Car {
 
     @Override
     public void tune(Integer index){
-
+        this.setHorsepower(this.getHorsepower() + index);
+        this.setSuspension(this.getSuspension() + index/2);
     }
 
     @Override

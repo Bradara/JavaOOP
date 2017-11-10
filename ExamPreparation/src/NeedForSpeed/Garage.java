@@ -28,11 +28,11 @@ public class Garage {
         return super.toString();
     }
 
-    public void unparkCar(Car car) {
+     void unparkCar(Car car) {
         this.parkedCars.remove(car);
     }
 
-    public void tune(Integer tuneIndex, String addOns) {
+     void tune(Integer tuneIndex, String addOns) {
 
         this.parkedCars.forEach(car -> {
             if(car.getClass().getSimpleName().equalsIgnoreCase("PerformanceCar")){
@@ -41,6 +41,7 @@ public class Garage {
             }
             if (car.getClass().getSimpleName().equalsIgnoreCase("ShowCar")) {
                 car.addStars(tuneIndex);
+                car.tune(tuneIndex);
             }
         });
     }

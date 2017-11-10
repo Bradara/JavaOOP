@@ -10,39 +10,50 @@ public abstract class Center {
     private String name;
     private List<Animal> storedAnimals;
 
-    Center(String name) {
+    protected Center(String name) {
         this.setName(name);
-        this.setStoredAnimal(null);
+        this.setStoredAnimal();
     }
 
     public String getName() {
         return name;
     }
 
-    public void removeAnimal(Animal animal){
+    public void removeAnimal(Animal animal) {
         this.storedAnimals.remove(animal);
     }
 
-    public void addAnimal(Animal animal){
+    public void addAnimal(Animal animal) {
         this.storedAnimals.add(animal);
     }
 
     public List<Animal> getStoredAnimals() {
-        return Collections.unmodifiableList(storedAnimals);
+        return Collections.unmodifiableList(this.storedAnimals);
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    void setStoredAnimal(List<Animal> animals) {
-        if (animals == null) {
-            animals = new ArrayList<>();
-        }
-        this.storedAnimals = animals;
+    private void setStoredAnimal() {
+        this.storedAnimals = new ArrayList<>();
     }
 
-    public abstract void clean();
+    public void clean() {
+        this.setStoredAnimal();
+    }
+
+    public void adopt() {
+        List<Animal> copy = new ArrayList<>();
+        for (Animal animal : this.getStoredAnimals()) {
+            if (animal.isCleansed())
+                copy.add(animal);
+        }
+
+        for (Animal animal : copy) {
+            this.removeAnimal(animal);
+        }
+    }
 
     @Override
     public String toString() {

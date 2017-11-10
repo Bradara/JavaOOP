@@ -37,6 +37,7 @@ public class Main {
                     break;
             }
         }
+
         AnimalCenterManager.printStatistics();
     }
 }
